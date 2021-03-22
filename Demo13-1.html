@@ -1,0 +1,54 @@
+// 13-1 显示内容的简单客户端JavaScript
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .reveal * {
+            display: none;
+        }
+
+        .reveal *.handle {
+            display: block;
+        }
+    </style>
+    <script>
+        // 所有的页面逻辑在onload事件之后启动
+        window.onload = function () {
+            var elements = document.getElementsByClassName("reveal");
+            for (var i = 0; i < elements.length; i++) {
+                var elt = elements[i];
+                var childElts = elt.getElementsByClassName('handle')
+                var title = childElts[0];
+                addRevealHandler(title, elt);
+            }
+            function addRevealHandler(title, elt) {
+                title.onclick = function () {
+                    elt.className = elt.className === 'reveal' ? 'revealed' : 'reveal';
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <div class="reveal">
+        <h1 class="handle">Click here to reveal hidden text</h1>
+        <p>This paragraph is hidden. It appears when you click on the title.</p>
+    </div>
+</body>
+
+</html>
